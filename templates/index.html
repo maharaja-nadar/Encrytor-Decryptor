@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Encryptor</title>
+  <style>
+    /* Full background image */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("/static/background.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    /* Center box with its own background image */
+    .container {
+      max-width: 400px;
+      width: 100%;
+      padding: 30px 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+      
+      background: url("/static/boxbackground.jpg") no-repeat center center;
+      background-size: cover;
+
+      /* Optional white overlay */
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(3px);
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: #222;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin: 10px 5px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+    }
+
+    /* Smaller logout button style (optional) */
+    .logout-btn {
+      background-color: #f44336;
+      margin-top: 20px;
+    }
+
+    .logout-btn:hover {
+      background-color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  {% if user %}
+    <h2>Welcome, {{ user }}</h2>
+  {% endif %}
+  <h1>File Encryptor / Decryptor</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label>Select file:</label><br><br>
+      <input type="file" name="file" required><br><br>
+      <button type="submit" name="action" value="encrypt">Encrypt</button>
+      <button type="submit" name="action" value="decrypt">Decrypt</button>
+    </form>
+
+    <!-- Step 6: Logout button -->
+    <form action="/logout" method="get">
+      <button type="submit" class="logout-btn">Logout</button>
+    </form>
+  </div>
+</body>
+</html>

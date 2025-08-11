@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("/static/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .container {
+    max-width: 350px;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    
+    /* Force background image */
+    background-image: url("/static/boxbackground.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #ffffff; /* fallback color in case image fails to load */
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* No overlay at all */
+.container::before {
+    content: none;
+}
+
+/* Keep text above background */
+.container * {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+  h1 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #222;
+  }
+
+  input[type="text"], 
+  .password-container input[type="password"] {
+    width: 85%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .password-container {
+    position: relative;
+    width: 100%;
+    margin: auto;
+  }
+
+  .password-container input[type="password"] {
+    padding-right: 35px;
+  }
+
+  .toggle-eye {
+    position: absolute;
+    top: 50%;
+    right: 35px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+
+      <div class="password-container">
+        <input type="password" name="password" placeholder="Password" id="loginPassword" required>
+        <span class="toggle-eye" onclick="togglePassword('loginPassword')">👁</span>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register">Register</a></p>
+  </div>
+
+<script>
+  function togglePassword(id) {
+    let input = document.getElementById(id);
+    input.type = input.type === "password" ? "text" : "password";
+  }
+</script>
+</body>
+</html>
