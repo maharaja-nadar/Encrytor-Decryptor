@@ -1,5 +1,5 @@
 pip>=25.2
-setuptools>=81
+setuptools>=80.9.0
 wheel
 mysql-connector-python
 
