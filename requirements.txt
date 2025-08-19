@@ -1,3 +1,8 @@
+pip>=25.2
+setuptools>=81
+wheel
+mysql-connector-python
+
 absl-py==2.2.1
 annotated-types==0.7.0
 anyio==4.8.0
